@@ -93,18 +93,10 @@ class TitleMeta(TitleExtension):
         help_text=_('If empty, page image will be used for all languages.'),
         on_delete=models.CASCADE,
     )
-    keywords = models.CharField(
-        max_length=2000, default='', blank=True
-    )
-    description = models.CharField(
-        max_length=2000, default='', blank=True
-    )
-    og_description = models.CharField(
-        _('Facebook Description'), max_length=2000, default='', blank=True
-    )
-    twitter_description = models.CharField(
-        _('Twitter Description'), max_length=2000, default='', blank=True
-    )
+    keywords = models.CharField(max_length=2000, blank=True)
+    description = models.CharField(max_length=2000, blank=True)
+    og_description = models.CharField(_('Facebook Description'), max_length=2000, blank=True)
+    twitter_description = models.CharField(_('Twitter Description'), max_length=2000, blank=True)
 
     class Meta:
         verbose_name = _('Page meta info (language-dependent)')
