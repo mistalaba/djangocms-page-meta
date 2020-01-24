@@ -45,3 +45,5 @@ docs/_build
 
 *.sqlite
 .eggs
+djangocms_page_meta/.vscode/
+.vscode/
