@@ -136,7 +136,7 @@ def get_page_meta(page, language):
 
         if not meta.description:
             meta.description = settings.META_DEFAULT_DESCRIPTION
-        if meta.use_og and not meta.og_description:
+        if meta.use_og and not getattr(meta, 'og_description', None):
             meta.og_description = settings.META_DEFAULT_DESCRIPTION
     return meta
 
