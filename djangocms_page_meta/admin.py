@@ -76,7 +76,6 @@ class TitleMetaAdmin(TitleExtensionAdmin):
         """
         return {}
 
-
 admin.site.register(TitleMeta, TitleMetaAdmin)
 
 

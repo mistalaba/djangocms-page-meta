@@ -24,6 +24,7 @@ class TitleMetaAdminForm(forms.ModelForm):
         exclude = ()
 
 
+
 class GenericAttributeInlineForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):

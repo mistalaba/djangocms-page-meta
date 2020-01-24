@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
+from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language_from_request
@@ -38,8 +39,14 @@ def get_page_meta(page, language):
     except AttributeError:
         return None
     meta = cache.get(meta_key)
+
     if not meta:
         meta = Meta()
+
+        # Fix description
+        if meta.description is None:
+            meta.description = ''
+
         title = page.get_title_obj(language)
         meta.extra_custom_props = []
 
@@ -126,6 +133,11 @@ def get_page_meta(page, language):
             if not getattr(meta, attr, '') and val:
                 setattr(meta, attr, val)
         meta.url = page.get_absolute_url(language)
+
+        if not meta.description:
+            meta.description = settings.META_DEFAULT_DESCRIPTION
+        if meta.use_og and not meta.og_description:
+            meta.og_description = settings.META_DEFAULT_DESCRIPTION
     return meta
 
 
